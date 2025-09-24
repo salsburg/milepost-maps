@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milepost Truck Stop Maps</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f8f9fa;
+      color: #222;
+    }
+    header {
+      background: white;
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    header img {
+      max-height: 70px;
+    }
+    h1 {
+      margin: 0.5rem 0 0;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #004aad;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background: #00347a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="milepost-logo.png" alt="Milepost Development">
+    <h1>Milepost Truck Stop Quadrant Maps</h1>
+  </header>
+
+  <div class="container">
+    <p>
+      Explore detailed traffic and infrastructure data across the U.S. in four interactive maps.
+      Each quadrant highlights <strong>truck flow at exits</strong>, <strong>HPMS AADT corridors</strong>,
+      and <strong>CAT Scale locations</strong>.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h2>North East</h2>
+        <p>From Ohio and Michigan through New England, covering the densest trucking corridors.</p>
+        <a href="NE.html" class="btn">Open Map</a>
+      </div>
+      <div class="card">
+        <h2>South East</h2>
+        <p>From Virginia down through Florida, capturing major freight hubs like Atlanta, Memphis, and Miami.</p>
+        <a href="SE.html" class="btn">Open Map</a>
+      </div>
+      <div class="card">
+        <h2>North West</h2>
+        <p>From the Midwest to the Northern Plains, showing agricultural and manufacturing freight flows.</p>
+        <a href="NW.html" class="btn">Open Map</a>
+      </div>
+      <div class="card">
+        <h2>South West</h2>
+        <p>From Texas to California, highlighting the nation’s largest freight corridors and border gateways.</p>
+        <a href="SW.html" class="btn">Open Map</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
