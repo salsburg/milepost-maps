@@ -9,11 +9,11 @@
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
-      background: #f8f9fa;
+      background: #f4f1ec; /* Corrected to match logo background */
       color: #222;
     }
     header {
-      background: white;
+      background: #f4f1ec;
       padding: 1rem;
       text-align: center;
       border-bottom: 1px solid #ddd;
@@ -25,7 +25,7 @@
       margin: 0.5rem 0 0;
       font-weight: 600;
     }
-	 footer {
+    footer {
       background: #f1f1f1;
       border-top: 1px solid #ddd;
       padding: 1rem;
@@ -33,16 +33,15 @@
       font-size: 0.85rem;
       color: #555;
     }
-
     .container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 2rem auto;
       padding: 0 1rem;
       text-align: center;
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 1.5rem;
       margin-top: 2rem;
     }
@@ -51,18 +50,26 @@
       border-radius: 12px;
       padding: 1.5rem;
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
     }
     .card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
     .card h2 {
       margin-top: 0;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
+    }
+    .card p {
+      flex-grow: 1;
+      font-size: 0.9rem;
+      line-height: 1.4;
     }
     .btn {
       display: inline-block;
-      margin-top: 1rem;
+      margin-top: auto;
       padding: 0.6rem 1.2rem;
       background: #004aad;
       color: white;
@@ -74,87 +81,187 @@
     .btn:hover {
       background: #00347a;
     }
+    .btn.disabled {
+      background: #aaa;
+      pointer-events: none;
+    }
+    hr {
+      margin: 3rem 0;
+      border: 0;
+      border-top: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
   <header>
     <img src="milepost-logo.png" alt="Milepost Development">
-    <h1>Milepost Truck Stop Quadrant Maps</h1>
+    <h1>Milepost: Site Selection Model Inputs</h1>
   </header>
 
   <div class="container">
     <p>
       Explore detailed traffic and infrastructure data across the U.S. in four interactive maps.
-      Each quadrant highlights <strong>truck flow at exits</strong>, <strong>HPMS AADT class-8 18wheeler corridors</strong>,
-      and <strong>Truck Stop incumbent locations</strong>.
+      Each quadrant highlights <strong>truck flow at exits</strong>, <strong>HPMS AADT class-8 corridors</strong>,
+      and <strong>truck stop incumbents</strong>.
     </p>
 
+    <!-- Quadrant Maps -->
     <div class="grid">
       <div class="card">
         <h2>North East</h2>
-        <p>From Ohio and Michigan through New England, covering the densest trucking corridors.</p>
+        <p>Covers Ohio and Michigan through New England, home to the densest freight corridors in the U.S.</p>
         <a href="NE.html" class="btn">Open Map</a>
       </div>
       <div class="card">
         <h2>South East</h2>
-        <p>From Virginia down through Florida, capturing major freight hubs like Atlanta, Memphis, and Miami.</p>
+        <p>Spans Virginia to Florida, including major hubs such as Atlanta, Memphis, and Miami.</p>
         <a href="SE.html" class="btn">Open Map</a>
       </div>
       <div class="card">
         <h2>North West</h2>
-        <p>From the Midwest to the Northern Plains, showing agricultural and manufacturing freight flows.</p>
+        <p>From the Midwest to the Northern Plains, highlighting agricultural and manufacturing freight flows.</p>
         <a href="NW.html" class="btn">Open Map</a>
       </div>
       <div class="card">
         <h2>South West</h2>
-        <p>From Texas to California, highlighting the nation’s largest freight corridors and border gateways.</p>
+        <p>From Texas to California, capturing the nation’s busiest freight lanes and border gateways.</p>
         <a href="SW.html" class="btn">Open Map</a>
       </div>
-
-		<div class="card">
+      <div class="card">
         <h2>All States Individually</h2>
-        <p>Explore each state individually for greater level of detail.</p>
+        <p>Explore each state in detail with dedicated maps for granular analysis.</p>
         <a href="states.html" class="btn">Open Map</a>
       </div>
-		
     </div>
-	
-	
-	    <p>
-      Additional Datasets Used in Model
-    </p>
-	
-	    <div class="grid">
+
+    <hr>
+
+    <!-- Current Datasets -->
+    <p style="margin-top:3rem; font-weight:600;">Additional Datasets Used in Model</p>
+    <div class="grid">
       <div class="card">
         <h2>CONUS US Census City Populations</h2>
-        <p>Explore top 1000 population cities in CONUS, along with growth rates.  Notice negative growth from large cities like NYC, Chicago, LA; while southern belt cities with larger growth.  Move mouse over each city to see populations 2020-2024, and annualized growth rates.  Good proxy for trucking freight absorbtion is population.  Connecting population centers, analyzing growth rates, raw population figures, and major (motorway and truck) US highway system corridors, along with overnight truck parking supply/demand dynamics, among other factors, leads to data driven ideal site selection for new truck stop locations.</p>
+        <p>Interactive map of the 1,000 largest U.S. cities with 2020–2024 population and growth data. Compare shrinking metros like NYC, Chicago, and LA against high-growth Sunbelt cities. Population dynamics serve as a strong proxy for freight absorption and site selection when paired with highway networks and parking demand.</p>
         <a href="topN_cities_map.html" class="btn">Open Map</a>
       </div>
-    
-	   <div class="card">
-        <h2>Buried Storage Tanks for Fuel Sales Proxy</h2>
-        <p>UST - Underground Storage Tanks - are an excellent mechanism to cross check incumbent fueling stations during site selection.</p>
+      <div class="card">
+        <h2>Buried Storage Tanks (Fuel Sales Proxy)</h2>
+        <p>Underground Storage Tank (UST) records provide a useful proxy for fuel sales activity. Mapping UST sites reveals fueling infrastructure beyond branded truck stops and helps cross-check supply density, identify underserved areas, and confirm local fueling patterns during site selection.</p>
         <a href="ust/ust_maps.html" class="btn">Open Map</a>
       </div>
-	  <div class="card">
-        <h2>Federal/State Public Parking - Other than Truck Stops (Public Alternatives)</h2>
-        <p>In addition to private truck stop networks, professional drivers rely heavily on federally and state-managed rest areas, welcome centers, weigh stations, and service plazas for parking. These facilities, while offering fewer amenities than commercial stops, provide essential relief points for mandated rest breaks, overnight parking, and emergency staging. Their importance was underscored by Jason’s Law, which highlighted the chronic shortage of safe truck parking nationwide and established federal support for improving access and capacity. Although often constrained, these public alternatives remain a vital part of the national freight network, particularly in corridors underserved by private development.</p>
+      <div class="card">
+        <h2>Federal/State Public Parking (Alternatives)</h2>
+        <p>Rest areas, welcome centers, weigh stations, and service plazas are essential relief points for drivers. Highlighted by Jason’s Law, these facilities underscore the nationwide shortage of safe truck parking and remain vital in corridors underserved by private stops.</p>
         <a href="privateparking/NTAD_Truck_Stop_Parking_map.html" class="btn">Open Map</a>
       </div>
-		 <div class="card">
-        <h2>Dedicated Private Parking - Other than Truck Stops and Public Facilities (Private Alternatives)</h2>
-        <p>Dedicated private parking facilities are an increasingly important alternative to traditional truck stops and public rest areas, offering secure and reliable space for drivers to park equipment, stage loads, or rest without the congestion of fuel and retail operations. Typically located near industrial corridors, distribution hubs, or highway interchanges, these sites vary in scale from small yards with just a few bobtail spots to large lots with more than a hundred tractor-trailer spaces. Many provide controlled access, lighting, and security measures, while flexible leasing options—ranging from daily to monthly reservations—allow both independent operators and fleets to plan more efficiently. By expanding safe, reservable capacity in areas where public parking is scarce, private facilities reduce pressure on overburdened truck stops, help drivers remain compliant with Hours of Service rules, and improve the flow of freight into urban and high-demand regions.</p>
+      <div class="card">
+        <h2>Dedicated Private Parking (Alternatives)</h2>
+        <p>Privately operated yards and parking facilities provide secure, reservable capacity near freight hubs. With features like controlled access and flexible leasing, they reduce congestion at truck stops, support HOS compliance, and ensure smoother freight flow into urban markets.</p>
         <a href="privateparking/privateparking_map.html" class="btn">Open Map</a>
       </div>
     </div>
-	
+
+    <hr>
+
+    <!-- Pending Datasets -->
+ 
+ 
+ <p style="margin-top:3rem; font-weight:600;">Additional Datasets (Used in Model – Individual Display Pending)</p>
+<div class="grid">
+  <div class="card">
+    <h2>Freight Rail Terminals</h2>
+    <p>Used in Model: Intermodal hubs and rail-to-truck transfer points with highway access. Display map pending.</p>
+    <a href="https://geodata.bts.gov/datasets/usdot::intermodal-freight-facilities-rail-tofc-cofc/about" target="_blank" class="btn">Open Link</a>
+  </div>
+  <div class="card">
+    <h2>Port Infrastructure</h2>
+    <p>Used in Model: Container port throughput and connected drayage corridors. Display map pending.</p>
+    <a href="https://data.bts.gov/dataset/Monthly-TEU-Capacity-of-Container-Ships-Calling-at/x6rh-cpwu/about_data" target="_blank" class="btn">Open Link</a>
+  </div>
+  <div class="card">
+    <h2>Airport Cargo Flows</h2>
+    <p>Used in Model: Class B & C airports with truck cargo demand estimates. Display map pending.</p>
+    <a href="https://data.bts.gov/Aviation/AFF-T100-Segment-Summary-By-Origin-Airport/r495-tyji/about_data" target="_blank" class="btn">Open Link</a>
+  </div>
+  <div class="card">
+    <h2>Freight Corridor Bottlenecks</h2>
+    <p>FHWA’s official list of the top national freight bottlenecks. Updated data supports analysis of congestion and staging demand.</p>
+    <a href="https://ops.fhwa.dot.gov/freight/freight_analysis/mobility_trends/national_list_2021.htm" target="_blank" class="btn">Open Link</a>
+  </div>
+
+  <div class="card">
+    <h2>Distribution Centers & Warehousing</h2>
+    <p>Used in Model: National dataset of fulfillment centers, DCs, and cold storage hubs. Display map pending.</p>
+   <a href="#" class="btn disabled">Open Link</a>
+  </div>
+  <div class="card">
+    <h2>Freight Generator Businesses</h2>
+    <p>Used in Model: Major shippers and receivers driving freight demand by industry. Display map pending.</p>
+    <a href="https://www.census.gov/programs-surveys/cfs/data/datasets.html" target="_blank" class="btn">Open Link</a>
+  </div>
+  <div class="card">
+    <h2>CAT Scale Locations</h2>
+    <p>Used in Model: Scale sites as proxies for heavy truck volumes and compliance stops. Display map pending.</p>
+    <a href="https://catscale.com/cat-scale-locator/" target="_blank" class="btn">Open Link</a>
+  </div>
+  <div class="card">
+    <h2>Monthly Diesel Fuel Volumes Distributed</h2>
+    <p>Used in Model: State-level diesel fuel distributions, large scale proxy for monthly growth trending state by state.</p>
+    <a href="https://data.transportation.gov/Roadways-and-Bridges/Monthly-Special-Fuel-Volumes-Distributed/5n49-mh85/about_data" target="_blank" class="btn">Open Link</a>
+  </div>
+
+  <div class="card">
+    <h2>New UST Permits</h2>
+    <p>Used in Model: Recently issued UST permits, signaling future fueling capacity growth. Display map pending.</p>
+    <a href="#" class="btn disabled">Open Link</a>
+  </div>
+  <div class="card">
+    <h2>Diesel Price Variance Hotspots</h2>
+    <p>Used in Model: Corridor-level diesel price variance influencing driver fueling patterns. Display map pending.</p>
+    <a href="https://www.eia.gov/opendata/browser/petroleum/pri/gnd" target="_blank" class="btn">Open Link</a>
+  </div>
+  <div class="card">
+    <h2>Truck Maintenance & Service Facilities</h2>
+    <p>Used in Model: Data used to evaluate whether to colocate a maintenance facility at candidate sites, influencing site economics. Display map pending.</p>
+    <a href="#" class="btn disabled">Open Link</a>
+  </div>
+  <div class="card">
+    <h2>State CDL Issuances</h2>
+    <p>Used in Model: Annual CDL issuance counts by state, tracking driver supply trends. Display map pending.</p>
+    <a href="https://cdlis.dot.gov/" target="_blank" class="btn">Open Link</a>
+  </div>
+
+  <div class="card">
+    <h2>HOS Violation Hotspots</h2>
+    <p>Used in Model: FMCSA roadside inspections showing Hours-of-Service compliance stress. Display map pending.</p>
+    <a href="https://www.fmcsa.dot.gov/regulations/hours-service/summary-hours-service-regulations" target="_blank" class="btn">Open Link</a>
+  </div>
+  <div class="card">
+    <h2>State Freight Plan Corridors</h2>
+    <p>Used in Model: Priority freight corridors from state DOT freight plans. Display map pending.</p>
+    <a href="https://ops.fhwa.dot.gov/fastact/state_freight_plans/presentation111616/index.htm" target="_blank" class="btn">Open Link</a>
+  </div>
+  <div class="card">
+    <h2>Truck Parking Grant Allocations</h2>
+    <p>Used in Model: Federal and state grant awards dedicated to truck parking projects. Display map pending.</p>
+    <a href="https://www.transportation.gov/tags/truck-parking" target="_blank" class="btn">Open Link</a>
+  </div>
+</div>
+
+
+
+    </div>
   </div>
 
   <footer>
     Confidential and Proprietary.<br>
     This map has been prepared by Jeremy Salsburg solely for the internal use of Milepost Development Group LLC.<br>
-    Any reproduction, disclosure, or use outside of Milepost is strictly prohibited without prior written consent.
+    Any reproduction, disclosure, or use outside of Milepost is strictly prohibited without prior written consent.<br>
+    &copy; <span id="year"></span> Milepost Development Group LLC
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
